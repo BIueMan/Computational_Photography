@@ -15,7 +15,7 @@ def refocus(LF, s, mask):
     y = np.arange(0, t_max, 1)
 
     sum_images = np.zeros_like(LF[0,0],dtype=np.float64)
-    for u in tqdm(range(u_max)):
+    for u in range(u_max):
         for v in range(v_max):
             sub_image = LF[u,v].astype(np.float64)
 

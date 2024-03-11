@@ -15,9 +15,15 @@ if __name__ == "__main__":
 
     # part 2
     masks = read_mat()
-    I_0 = refocus(LF, 0, masks[0])
-    I_1 = refocus(LF, -0.5, masks[0])
-    I_2 = refocus(LF, -1, masks[0])
+    start, end, step = 0, -1.2, -0.05
+    I_id = []
+    for m, mask in enumerate(masks):
+        I = []
+        for i in tqdm(np.arange(start, end, step)):
+            I_i = refocus(LF, i, mask)
+            I.append(I_i)
+        I_print = [I[0], I[len(I)//2], I[-1]]
+        I_id.append(I_i)
 
-    combined_image = np.concatenate((I_0, I_1, I_2), axis=1)
-    plt.imsave('ex2_q2.png', combined_image/255)
+        combined_image = np.concatenate(I_print, axis=1)
+        plt.imsave(f'ex2_q2_m{m}.png', combined_image/255)
