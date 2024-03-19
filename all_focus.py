@@ -61,6 +61,29 @@ def calculate_depth(w_sharpness):
     
     return depth_map
 
+def plot_image_grid(images, n_columns=8):
+    num_images, image_height, image_width = images.shape  # Get image dimensions
+
+    # Calculate total width of the grid
+    total_width = n_columns * image_width
+    total_height = (num_images + n_columns - 1) // n_columns * image_height
+
+    fig, axes = plt.subplots(num_images // n_columns, n_columns, figsize=(total_width / 200, total_height / 200))
+
+    for i in range(num_images):
+        row_index = i // n_columns
+        col_index = i % n_columns
+        ax = axes[row_index, col_index]
+        ax.imshow(images[i])
+        ax.set_title(f"Image {i+1}")
+        ax.axis('off')
+
+    for j in range(num_images, (num_images // n_columns ) * n_columns):  # Clearing extra subplots
+        row_index = j // n_columns
+        col_index = j % n_columns
+        fig.delaxes(axes[row_index, col_index])
+
+    plt.tight_layout()
 
 if __name__ == "__main__":
     # part 1
@@ -82,11 +105,14 @@ if __name__ == "__main__":
     I = np.array(I)
 
     gray_image = np.array([cv2.cvtColor(I_i.astype(np.uint8), cv2.COLOR_BGR2GRAY) for I_i in I]).astype(np.float64)
-    w_sharpness = get_sharpness(gray_image, k=25, sigma1= 1, sigma2= 1.6)
+    w_sharpness = get_sharpness(gray_image, k=25, sigma1= 8, sigma2= 2)
     all_focus_image = calculate_all_focus(I, w_sharpness)
     depth = calculate_depth(w_sharpness)
     
     plt.imshow(all_focus_image/all_focus_image.max())
+    plt.show()
+
+    plot_image_grid(w_sharpness, 8)
     plt.show()
     
     plt.imshow(depth/depth.max(), cmap='gray')
