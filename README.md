@@ -11,8 +11,7 @@ This assignment explores lightfields and focal stacks, combining them into a sin
 - **main.py**: Script to run all subsections.
 - **read_mat.py**: Python script for reading MATLAB files.
 - **refocus.py**: Python function for refocusing and generating focal stacks.
-- **studentID1_studentID2.pdf**: Report with analysis and image arrays.
-- **ex1_q1.png**: Mosaic of sub-aperture views.
+
 - **ex2_q2_mj.png**: Refocused images with different aperture masks.
 - **all_focus_image.png**: All-in-focus image.
 - **depth_map.png**: Corresponding depth map.
