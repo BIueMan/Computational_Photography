@@ -6,10 +6,11 @@ This assignment explores lightfields and focal stacks, combining them into a sin
 ![Image Title](images_out/ex2_q2_m0.png)
 
 ## Files
-- **LFArrangement.py**: Python function for loading the plenoptic image and arranging it into a lightfield.
-- **Refocusing.py**: Python function for refocusing and generating focal stacks.
-- **AllFocusDepthMap.py**: Python function for extracting an all-in-focus image and a depth map.
-- **MainEx2.py**: Script to run all subsections.
+- **all_focus.py**: Python function for generating an all-in-focus image and a depth map from a focal stack.
+- **lightfield_converter.py**: Python function for loading the plenoptic image and arranging it into a lightfield.
+- **main.py**: Script to run all subsections.
+- **read_mat.py**: Python script for reading MATLAB files.
+- **refocus.py**: Python function for refocusing and generating focal stacks.
 - **studentID1_studentID2.pdf**: Report with analysis and image arrays.
 - **ex1_q1.png**: Mosaic of sub-aperture views.
 - **ex2_q2_mj.png**: Refocused images with different aperture masks.
